@@ -1,0 +1,48 @@
+<true-dialog-wrapper-mat
+  [dialog]="dialog"
+  (btnClick)="dialogBtnClick($event)">
+  <div class="true-content-mat">
+    <div class="true-filter-fields">
+      <true-datepicker-mat #firstPicker
+        [(ngModel)]="filter.value"
+        label="{{'Start date' | trueTranslate}}"
+        class="true-filter-field true-filter-date__datepicker"
+        pattern="date"></true-datepicker-mat>
+      <!--<div class="true-filter-date__dash">&ndash;</div>-->
+      <true-datepicker-mat
+        [(ngModel)]="filter.value2"
+        label="{{'End date' | trueTranslate}}"
+        class="true-filter-field true-filter-date__datepicker"
+        pattern="date"></true-datepicker-mat>
+      <mat-form-field class="true-filter-field true-filter-date__selector" #intervalSelector>
+        <mat-label>{{'Interval' | trueTranslate}}</mat-label>
+        <mat-select [(value)]="currentInterval" (openedChange)="selectOpened($event)">
+          <mat-option *ngFor="let interval of intervals" [value]="interval.id">
+            {{interval.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="true-filter-options">
+      <button tabindex="1"
+        mat-button
+        [disabled]="selectMode"
+        [matMenuTriggerFor]="menu"
+        (menuClosed)="menuClosed($event)"
+        (menuOpened)="menuOpened($event)">{{filter.operator.name | trueTranslate}}</button>
+      <mat-menu
+        #menu="matMenu"
+        yPosition="below">
+        <button *ngFor="let o of operators"
+                mat-menu-item
+                class="true-mat-menu-item"
+                (click)="operator(o)">
+          <mat-icon [class.true-icon-visible]="filter.operator === o">done</mat-icon>
+          <span>{{o.name | trueTranslate}}</span>
+        </button>
+        <button class="true-dummy" mat-menu-item>dummy</button>
+      </mat-menu>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</true-dialog-wrapper-mat>

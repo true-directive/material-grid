@@ -1,0 +1,16 @@
+<div *ngFor="let a of column.summaries"
+     class="true-aggr"
+     [style.height.px]="state.st.rowHeight"
+     mat-ripple
+     (mousedown)="summaryMouseDown($event)"
+     (touchstart)="summaryTouchStart($event)"
+     (click)="toggleMenu($event, a)">
+  <div>
+    <span class="true-aggr-caption">{{a.type.footerText | trueTranslate}}&nbsp;</span>{{displayedValue(a)}}
+  </div>
+</div>
+<div
+  class="true-aggr"
+  *ngIf="!column.isCheckbox && column.summaries.length === 0">
+  <span class="true-icon-sigma"></span>
+</div>

@@ -1,0 +1,36 @@
+<div #caption
+  class="true-header-cell__caption"
+  [class.true-header-cell__checkbox]="column.isCheckbox"
+  [class.true-header-cell__filtered]="isFiltered()"
+  (contextmenu)="contextMenu($event)"
+  (mousedown)="mouseDown($event)"
+  (mouseup)="mouseUp($event)">
+  <mat-checkbox
+    *ngIf="column.isCheckbox && !state.settings.checkByCellClick"
+    (mousedown)="cbMouseDown($event)"
+    [checked]="isColumnChecked"
+    [indeterminate]="isColumnIndeterminate"
+    (click)="toggleCheck($event)"></mat-checkbox>
+  <mat-pseudo-checkbox
+    *ngIf="column.isCheckbox && state.settings.checkByCellClick"
+    (mousedown)="cbMouseDown($event)"
+    [state]="isColumnIndeterminate ? 'indeterminate' : (isColumnChecked ? 'checked' : 'unchecked')"
+    (click)="toggleCheck($event)"></mat-pseudo-checkbox>
+  <mat-icon *ngIf="sortedUp" class="true-sort-indicator-mat">arrow_upward</mat-icon>
+  <mat-icon *ngIf="sortedDown" class="true-sort-indicator-mat">arrow_downward</mat-icon>
+  <div *ngIf="!column.isCheckbox"
+       [class.true-header-cell__txt_nowrap]="!state.settings.headerWordWrap"
+       class="true-header-cell__txt">
+    {{column.caption | trueTranslate}}
+  </div>
+  <button #btn
+          *ngIf="!column.isCheckbox && state.settings.allowFilter && (column.allowFilter || isFiltered())"
+          class="true-header-button-mat"
+          (click)="btnClick($event)"
+          (touchstart)="btnTouch($event)"
+          (mousedown)="btnMouseDown($event)"
+          mat-icon-button
+          aria-label="Filter button">
+    <mat-icon>filter_list</mat-icon>
+  </button>
+</div>

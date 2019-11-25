@@ -1,0 +1,61 @@
+<div #gridFooterTable class="true-grid-footer" [ngClass]="state.settings.appearance.getFooterClass()">
+  <!-- Menu with aggregation types -->
+  <mat-menu #menu="matMenu" yPosition="above">
+    <button *ngIf="menuSummary !== null"
+            mat-menu-item
+            class="true-mat-menu-item"
+            [matMenuTriggerFor]="newAggrMenu">
+      <mat-icon>done</mat-icon>
+      <span>{{'Add' | trueTranslate}}</span>
+    </button>
+    <mat-divider *ngIf="menuSummary !== null"></mat-divider>
+    <button
+      *ngFor="let t of summaryTypes; let i=index"
+      class="true-mat-menu-item"
+      (click)="setAggr(t)"
+      mat-menu-item [disabled]="!canApply(t)">
+      <mat-icon [class.true-icon-visible]="menuSummary && menuSummary.type === t">done</mat-icon>
+      <span>{{t.name | trueTranslate}}</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button class="true-dummy" mat-menu-item>dummy</button>
+    <button class="true-mat-menu-item" (click)="setAggr(null)" [disabled]="false" mat-menu-item>
+      <mat-icon [class.true-icon-visible]="!menuSummary">done</mat-icon>
+      <span>{{'None' | trueTranslate}}</span>
+    </button>
+  </mat-menu>
+  <!-- Submenu -->
+  <mat-menu #newAggrMenu="matMenu">
+    <button
+      *ngFor="let t of summaryTypes; let i=index"
+      (click)="addAggr(t)"
+      mat-menu-item
+      [disabled]="!canApply(t)">{{t.name | trueTranslate}}</button>
+  </mat-menu>
+  <!-- Footer table -->
+  <table class="mat-table" [style.width]="layout.headerWidth">
+    <colgroup>
+      <col *ngFor="let c of layout.columns" [style.width]="layout.displayedHeaderWidth(c)" />
+      <col *ngIf="layout.isCenter" class="true-grid-re" [style.width]="state.st.hdWidth" />
+    </colgroup>
+    <tfoot>
+      <tr>
+        <td #footerCells
+            *ngFor="let c of layout.columns"
+            class="mat-footer-cell"
+            mat-ripple
+            (mousedown)="changes()"
+            (click)="tdClick(c)"
+            [matMenuTriggerFor]="menu"
+            (menuClosed)="menuClosed()"
+            [style.height.px]="state.settings.rowHeight"
+            [class.true-footer-icon-visible]="isCurrent(c)"
+            [ngClass]="state.settings.footerCellClass(c)">
+              <true-grid-footer-cell-mat [column]="c" (needMenu)="showMenu($event, c)">
+              </true-grid-footer-cell-mat>
+        </td>
+        <td *ngIf="layout.isCenter" style="border:0;"></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

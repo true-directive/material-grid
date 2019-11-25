@@ -1,0 +1,23 @@
+<!--<div *ngIf="dialog.showHeader" class="true-header">
+  <span>{{caption}}</span>
+  <button class="true-button flat" (click)="btnClick.emit(closeBtn)"><span class="true-close"></span></button>
+</div>-->
+<div class="true-body-mat">
+  <div #alertContainer class="true-alert-container"></div>
+  <div>
+    <ng-content></ng-content>
+  </div>
+  <!--<mat-divider></mat-divider>-->
+  <div *ngIf="dialog.showFooter" class="true-footer-mat">
+      <p *ngFor="let b of dialog.buttons">
+        <button mat-flat-button color="primary" *ngIf="b.cssClass==='primary'"
+          #buttons
+          (click)="btnClick.emit(b)"
+          [disabled]="b.disabled">{{b.caption}}</button>
+        <button mat-stroked-button color="primary" *ngIf="b.cssClass!=='primary'"
+          #buttons
+          (click)="btnClick.emit(b)"
+          [disabled]="b.disabled">{{b.caption}}</button>
+      </p>
+  </div>
+</div>

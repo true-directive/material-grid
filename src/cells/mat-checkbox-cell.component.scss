@@ -1,0 +1,18 @@
+:host {
+  padding: 0;
+}
+
+// Предотвращаем мерцание рендеринге строки.
+// Иначе создается ложное ощущение, что что-то тормозит и лагает
+.true-cell-mat-cb {
+  transition: none !important;
+}
+
+/deep/ .true-cell-mat-cb .mat-checkbox-background {
+  transition: none !important;
+}
+
+/deep/ .true-cell-mat-cb .mat-checkbox-mixedmark {
+  transition: none !important;
+  transition-property: none !important;
+}

@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  min-width: 22em;
+}
+
+.true-filter-boolean__checkboxes {
+  padding: 2.2em 1em 0.5em 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: baseline;
+}

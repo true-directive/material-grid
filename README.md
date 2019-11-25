@@ -1,2 +1,3 @@
-# material-grid
-Material design wrapper for the TrueDirective Grid
+# TrueDirective Material Grid
+
+Material design wrapper for the TrueDirective Grid.

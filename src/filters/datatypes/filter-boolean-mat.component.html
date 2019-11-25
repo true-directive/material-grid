@@ -1,0 +1,12 @@
+<true-dialog-wrapper-mat
+  #dialogWrapper
+  [dialog]="dialog"
+  (btnClick)="dialogBtnClick($event)">
+  <div class="true-filter-boolean__checkboxes">
+    <mat-checkbox
+      [(ngModel)]="trueValues">{{'True' | trueTranslate}}</mat-checkbox>
+    <mat-checkbox
+      [(ngModel)]="falseValues">{{'False' | trueTranslate}}</mat-checkbox>
+  </div>
+  <mat-divider></mat-divider>
+</true-dialog-wrapper-mat>

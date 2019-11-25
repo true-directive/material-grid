@@ -1,0 +1,49 @@
+<true-dialog-wrapper-mat
+  [dialog]="dialog"
+  (btnClick)="dialogBtnClick($event)">
+  <div class="true-content-mat">
+    <div class="true-filter-fields">
+      <mat-form-field #inputWrapper class="true-filter-field">
+        <input #input
+          matInput [placeholder]="filter.caption" autocomplete="off"
+          [(ngModel)]="filter.value"
+          [disabled]="noText()"
+          autofocus />
+      </mat-form-field>
+    </div>
+    <div class="true-filter-options">
+      <button tabindex="1"
+        mat-button
+        [disabled]="selectMode"
+        [matMenuTriggerFor]="menu"
+        (menuClosed)="menuClosed($event)"
+        (menuOpened)="menuOpened($event)">{{filter.operator.name | trueTranslate}}</button>
+      <mat-menu
+        #menu="matMenu"
+        yPosition="below">
+        <button *ngFor="let o of operators"
+                mat-menu-item
+                class="true-mat-menu-item"
+                (click)="operator(o)">
+          <mat-icon [class.true-icon-visible]="filter.operator === o">done</mat-icon>
+          <span>{{o.name | trueTranslate}}</span>
+        </button>
+        <button class="true-dummy" mat-menu-item>dummy</button>
+      </mat-menu>
+      <button
+        tabindex="2"
+        mat-button
+        class="true-filter-text__mode-selector"
+        (click)="toggleMode($event)">{{'Select' | trueTranslate}}</button>
+    </div>
+    <div class="true-filter-text__items" *ngIf="selectMode">
+      <true-material-grid #grid class="true-filter-text__grid mat-elevation-z1"
+          [class.true-error-border]="gridError"
+          [columns]="listColumns"
+          [data]="items"
+          [settings]="listSettings">
+      </true-material-grid>
+    </div>
+  </div>
+  <mat-divider *ngIf="!selectMode"></mat-divider>
+</true-dialog-wrapper-mat>

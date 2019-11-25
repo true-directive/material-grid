@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  width: 28em;
+}
+
+.true-filter-field {
+  width: 9em;
+  flex-grow: 1;
+  input {
+    text-align: right;
+    padding-right: 4px !important; 
+  }
+}
+
+.true-filter-number__mode-selector {
+  float: right;
+}
