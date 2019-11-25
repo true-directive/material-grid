@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 
+// Material Grid components
 import { ScrollerComponent } from '@true-directive/grid';
 
 import { MaterialGridComponent } from '../src/material-grid.component';
@@ -38,22 +39,28 @@ import { MatPseudoCheckboxCell } from '../src/cells/mat-pseudo-checkbox-cell.com
 // Popup&Menu
 import { PopupMatComponent } from '../src/controls/popup-mat.component';
 
-// controls
+// Controls
 import { DatepickerMatComponent } from '../src/controls/datepicker-mat.component';
 import { DialogWrapperMatComponent } from '../src/controls/dialog-wrapper-mat.component';
+
+// Base classes and enumerations
+import { SortInfo, SortType, Filter, FilterOperator,
+         SummaryType, Keys, EditorShowMode } from '@true-directive/grid';
 
 // Masked input directives
 import { MaskDateDirective, MaskNumberDirective } from '@true-directive/grid';
 
-import { TranslatePipe } from '@true-directive/grid';
-
+// Grid state
 import { GridStateService } from '@true-directive/grid';
+
+// I18n
+import { TranslatePipe } from '@true-directive/grid';
 import { InternationalizationService } from '@true-directive/grid';
 
-import { SortInfo, SortType, Filter, FilterOperator, SummaryType, Keys, EditorShowMode } from '@true-directive/base';
-
+// Grid Container
 import { GridContainer, triggerEvent } from './grid.component.factory';
 
+// Angular Material components
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -125,6 +132,7 @@ describe('Grid', () => {
             componentFixture = TestBed.createComponent(GridContainer);
             componentFixture.detectChanges();
             container = <GridContainer>componentFixture.componentInstance;
+            PopupMatComponent.renderToBody = false;
         })
     }));
 
@@ -136,18 +144,18 @@ describe('Grid', () => {
       container.grid.clearSelection();
     });
 
-    it('should be defined', () => {
+    it('Should be defined', () => {
         componentFixture.detectChanges();
         expect(componentFixture).toBeDefined();
       }
     );
 
-    it('rendered visible rows', () => {
+    it('Rendered visible rows', () => {
         expect(container.grid.visibleRows.length < 20).toBeTruthy();
       }
     );
 
-    it('sort by column', async(() => {
+    it('Sort by column', async(() => {
       container.grid.sort([new SortInfo('col1', SortType.DESC)], false);
       container.grid.updateData(false);
       componentFixture.whenStable().then(() => {
@@ -155,7 +163,7 @@ describe('Grid', () => {
       });
     }));
 
-    it('filter by boolean value', async(() => {
+    it('Filter by boolean value', async(() => {
       const f: Filter = container.columnByField('booleanValue')
                       .createFilter(true, FilterOperator.EQUALS);
       container.grid.filter([f], false);
@@ -165,7 +173,7 @@ describe('Grid', () => {
       });
     }));
 
-    it('select first row', async(() => {
+    it('Select first row', async(() => {
 
       const firstRow = container.grid.resultRows[0];
       container.grid.locateRow(firstRow);
@@ -175,7 +183,7 @@ describe('Grid', () => {
       });
     }));
 
-    it('select ranges', async(() => {
+    it('Select ranges', async(() => {
 
       const row1 = container.grid.resultRows[1];
       const row2 = container.grid.resultRows[2];
@@ -197,7 +205,7 @@ describe('Grid', () => {
     }));
 
 
-    it('summaries', async(() => {
+    it('Summaries', async(() => {
 
       const col = container.columnByField('col1');
       col.addSummary(SummaryType.MIN);
@@ -217,7 +225,7 @@ describe('Grid', () => {
     }));
 
 
-    it('edit', async(() => {
+    it('Edit cell value', async(() => {
       container.grid.settings.editorShowMode = EditorShowMode.ON_CLICK_FOCUSED;
 
       container.processKey(Keys.DOWN);
@@ -256,17 +264,18 @@ describe('Grid', () => {
       expect(container.grid.state.focusedCell.row).toBe(container.data[99]);
     }));
 
-    it('filter show', (done) => {
+    it('Show filter', (done) => {
+
       let filterBtn: HTMLElement = componentFixture.elementRef.nativeElement.querySelector('.true-header-button-mat');
-      let booleanFilter: HTMLElement = componentFixture.elementRef.nativeElement.querySelector('.true-filter-boolean__checkboxes');
+      let booleanFilter: HTMLElement = document.body.querySelector('.true-filter-boolean__checkboxes');
       expect(booleanFilter).toBeNull();
 
       triggerEvent(filterBtn, 'click', 'MouseEvent');
       setTimeout(() => {
-        let booleanFilter2 = componentFixture.elementRef.nativeElement.querySelector('.true-filter-boolean__checkboxes');
+        let booleanFilter2 = document.body.querySelector('.true-filter-boolean__checkboxes');
         expect(booleanFilter2).not.toBeNull();
         container.grid.filterPopup.closePopup();
         done();
-      }, 100);
+      }, 300);
     });
 });

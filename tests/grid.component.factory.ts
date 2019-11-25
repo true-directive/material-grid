@@ -41,7 +41,6 @@ export class GridContainer {
     get columns() {
 
       if (this._columns === null) {
-
         this._columns = [
           new Column('checked', 'Checked', 50, ColumnType.CHECKBOX, 'Data types'),
           new Column('booleanValue', 'Boolean', 100, ColumnType.BOOLEAN, 'Data types'),
@@ -50,7 +49,6 @@ export class GridContainer {
           new Column('formatted2', 'Formatted 2', 100, ColumnType.NUMBER, 'Data types', '{D1-4.2} kg'),
           new Column('name', 'Name', 100, ColumnType.STRING, 'Data types')
         ];
-
         for (let j = 0; j < 20; j++) {
           const field = `col${j}`;
           const col = new Column(field, field, 120, ColumnType.NUMBER, 'Values');
@@ -107,10 +105,8 @@ export class GridContainer {
     public processKey(keyCode: number, shift: boolean = false,  ctrl: boolean = false) {
       this.grid.processKey(Keys.generateEvent(
         null,
-        keyCode,
-        '',
-        shift,
-        ctrl
+        keyCode, '',
+        shift, ctrl
       ));
     }
 
