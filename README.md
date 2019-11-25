@@ -3,7 +3,7 @@
 Material design wrapper for the [TrueDirective Grid](https://truedirective.com).
 For displaying grid parts Angular Material components and styles are used  wherever it's possible. All features of the TrueDirective Grid are available.
 
-![TrueDirective Material Grid screenshot](/assets/material-screen-4.png)
+![TrueDirective Material Grid screenshot](https://truedirective.com/assets/material-screen-4.png)
 
 ### Installing
 
