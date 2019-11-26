@@ -23,7 +23,7 @@ For displaying grid parts Angular Material components and styles are used  where
 
 ## Documentation
 
-Documentation is available on the [truedirective.com](https://truedirective.com/docs).
+Documentation is available on the [https://truedirective.com](https://truedirective.com/docs).
 
 ## Usage
 
@@ -47,7 +47,7 @@ Now you can install TrueDirective Material Grid:
 npm install @true-directive/material-grid --save
 ```
 
-### 2. Import @true-directive/material-grid module
+### 2. Import TrueDirectiveMaterialGridModule
 
 Edit the file `app.module.ts` by adding two lines:
 
@@ -338,6 +338,6 @@ export class AppComponent {
 }
 ```
 
-As a result we will get a table with 50 rows:
+As a result you will get a table with 50 rows:
 
 ![Screenshot 3](https://truedirective.com/assets/m-screen-3.png)
