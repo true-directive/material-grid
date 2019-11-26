@@ -21,6 +21,10 @@ For displaying grid parts Angular Material components and styles are used  where
 
 [Live Demo](https://truedirective.com/demo/material).
 
+## Documentation
+
+Documentation is available on the [truedirective.com](https://truedirective.com/docs).
+
 ## Usage
 
 ### 1. Installation
