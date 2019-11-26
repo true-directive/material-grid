@@ -62,4 +62,8 @@ export class MaterialGridComponent extends GridComponent {
     }
     return filterType;
   }
+
+  protected get appearanceClass(): string {
+    return this.state.sta.classMat;
+  }
 }
