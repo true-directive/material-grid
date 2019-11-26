@@ -50,3 +50,5 @@ public_api.js
 *.metadata.json
 dist.tgz
 /.ng_pkg_build
+/src/**/*.js
+/src/**/*.d.ts
