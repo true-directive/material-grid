@@ -1,0 +1,531 @@
+@import '~@angular/material/theming';
+
+@mixin true-directive-theme($theme) {
+
+  // Highlight
+  $axSearchHighlightBack: #f6b94d !default;
+
+  // Paddings
+  $axGridCellVPadding: 6px !default;
+  $axGridCellHPadding: 6px !default;
+  $axGridCellHPadding1: $axGridCellHPadding / 2 !default;
+  $axGridCellHPadding2: $axGridCellHPadding - $axGridCellHPadding1 !default;
+
+  //
+  $axNotActiveOpacity: 0.2;
+  $axOpacityTransition: opacity .25s ease-in;
+
+  // Main colors
+  $axBackground: map-get($theme, background);
+  $axForeground: map-get($theme, foreground);
+
+  // Is theme dark?
+  $axIsDark: map-get($theme, is-dark);
+  $axAccent: map-get($theme, accent);
+
+  // Header params
+  $axHeaderColor: mat-color($axForeground, secondary-text, 0.4);
+  $axHeaderBorder: 1px solid mat-color($axForeground, divider);
+
+  // Focused cell params
+  $axFocused-border-width: 1px;
+  $axFocused-border-color: mat-color($axForeground, divider, if($axIsDark, 0.3, 0.25));
+  $axFocused-border-style: solid;
+
+  $axDataBackColor: mat-color($axBackground, card);
+
+  // Data cell params
+  $axDataBorder: 1px solid if($axIsDark,
+    darken(mat-color($axForeground, divider), 40%),
+    lighten(mat-color($axForeground, divider), 40%)) !default;
+
+
+  // Selection params
+  $axSelectedColor1: if($axIsDark,
+    lighten(mat-color($axBackground, selected-button), 20%),
+    lighten(mat-color($axBackground, selected-button), 8%));
+
+  $axSelectedColor2: if($axIsDark, lighten($axSelectedColor1, 5%), darken($axSelectedColor1, 3%));
+  $axSelectedColor3: if($axIsDark, lighten($axSelectedColor2, 5%), darken($axSelectedColor2, 3%));
+  $axSelectedColor4: if($axIsDark, lighten($axSelectedColor3, 5%), darken($axSelectedColor3, 3%));
+  $axSelectedColor5: if($axIsDark, lighten($axSelectedColor4, 5%), darken($axSelectedColor4, 3%));
+  $axSelectedColor6: if($axIsDark, lighten($axSelectedColor5, 5%), darken($axSelectedColor5, 3%));
+
+  $axHoverColor: if($axIsDark, darken($axSelectedColor1, 4%), lighten($axSelectedColor1, 2%));
+
+  $axInputBackgroundColor: if($axIsDark, darken($axSelectedColor1, 15%), lighten($axSelectedColor1, 20%));
+
+  $axPopupBackgroundColor: mat-color($axBackground, card) !default;
+  $axPopupBorderRadius: 4px !default;
+
+  // Filter popups
+  .true-popup-mat {
+    background-color: $axPopupBackgroundColor;
+    border-radius: $axPopupBorderRadius;
+    transform-origin: top right;
+
+    .true-body-mat {
+      .true-content-mat {
+        padding: 1.5em 1.0em 0 1.0em;
+
+        .true-filter-fields {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-content: stretch;
+          justify-content:  space-between;
+          align-items: baseline;
+        }
+
+        .true-filter-options {
+          margin: 0 0.75em;
+        }
+
+        .true-filter-field {
+          margin: 0 0.75em;
+        }
+
+        .mat-form-field-type-mat-input .mat-form-field-infix {
+          padding: 10px 0;
+        }
+
+        .mat-form-field-type-mat-select .mat-form-field-infix {
+          padding: 10px 0;
+        }
+
+        button {
+          margin: 0;
+          padding: 0.0em 0.15em;
+        }
+      }
+
+      .mat-divider {
+        position: static;
+        margin-top: 0.75em;
+      }
+
+      .true-footer-mat {
+        padding: 1.5em 1.0em 1.0em 1.0em;
+        button {
+          margin-left: 1.0em;
+        }
+      }
+    }
+  }
+
+  // Пункт всплывающего меню
+  .true-mat-menu-item {
+    // Наши наименования довольно коротки. Чтобы не было узкого меню
+    min-width: 150px !important;
+
+    .mat-icon {
+      // Корректируем размер
+      font-size: 20px !important;
+      margin-right: 6px;
+      // По умолчанию иконки скрыты.
+      visibility: hidden;
+    }
+
+    // Но по требованию показываем
+    .mat-icon.true-icon-visible {
+      visibility: visible;
+    }
+  }
+
+  .true-dummy {
+    display: none !important;
+  }
+
+  .true-grid-material {
+    background-color: mat-color($axBackground, card);
+
+    .true-grid-drag-item-appearance {
+      border-radius: 4px;
+
+      .true-grid-header {
+        opacity: 0.97;
+
+        .true-header-cell {
+          padding: 0 $axGridCellHPadding;
+        }
+      }
+
+      .true-drag-data {
+        padding: 40px;
+      }
+
+      .true-grid-data {
+        opacity: 0.97;
+        border: $axDataBorder;
+        background-color: mat-color($axBackground, 'card');
+
+        td {
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          border: 0 !important;
+        }
+      }
+    }
+
+    // -- HEADER ---------------------------------------------------------------
+    .true-header-appearance {
+      border-bottom: $axHeaderBorder;
+
+      // -- SORT INDICATOR -----------------------------------------------------
+      .true-sort-indicator-mat {
+        font-size: 18px !important;
+        height: unset;
+        padding-right: 2px;
+      }
+      // -- HEADER BUTTON ------------------------------------------------------
+      .true-header-button-mat {
+        .material-icons {
+          font-size: 18px !important;
+        }
+        opacity: $axNotActiveOpacity;
+        transition: $axOpacityTransition;
+      }
+
+      // Hovered header
+      .true-header-button-mat:hover,
+      .true-grid-btn-visible .true-header-button-mat {
+        visibility: visible;
+        opacity: 1.0 !important;
+      }
+
+      // Filtered column's header
+      .true-header-cell__filtered .true-header-button-mat {
+        color: mat-color($axAccent);
+      }
+
+      // div containings header's table
+      & > * > .true-grid-header {
+
+        tr:last-child {
+          border-bottom: 0;
+        }
+
+        th.band {
+          padding: 0;
+        }
+
+        th:not(.band) {
+          padding: 0 $axGridCellHPadding1;
+        }
+
+        th.true-header-cell__checkbox {
+          padding: 0;
+          border-right: 0 !important;
+          text-align: center;
+        }
+
+        .true-header-band__caption {
+          padding: $axGridCellVPadding $axGridCellHPadding;
+        }
+
+        // Paddings
+        // Horizontal paddings in a header cell
+        .true-header-cell {
+          padding: 0 $axGridCellHPadding2;
+        }
+
+        // Padding between sort indicator and header text
+        .true-header-cell__sort-indicator {
+          padding-right: $axGridCellHPadding2;
+        }
+
+          // Header text
+         .true-header-cell__txt {
+          padding: $axGridCellVPadding $axGridCellHPadding $axGridCellVPadding 0;
+        }
+
+        th:not(.true-column-resizable) + th.true-column-resizable .true-header-cell {
+          // Transfer left padding to text element
+          padding-left: 0 !important;
+          .true-header-cell__caption {
+            padding-left: $axGridCellHPadding !important;
+          }
+        }
+
+        // Header vertical lines
+        &.true-v-lines th:not(:last-child) {
+          border-right: $axHeaderBorder;
+        }
+
+        // Header horizontal lines
+        &.true-h-lines .true-header-band__caption {
+          border-bottom: $axHeaderBorder;
+        }
+      }
+    }
+
+    // Visible filter btn on touch devices
+    .true-fix-touch .true-header-button-mat {
+      visibility: visible;
+    }
+
+    // -- DATA  ----------------------------------------------------------------
+    // Hovered row
+    .true-grid-data-appearance.true-hovered-row-hl tr:not(.true-row-checked):hover > td:not(.true-cell-indent):not(.true-range-selected):not(.true-cell-focused) {
+      background-color: $axHoverColor;
+    }
+
+    .true-grid-data-appearance {
+
+      & > table > tbody > tr > td {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        padding: $axGridCellVPadding $axGridCellHPadding;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        // Reordered column fade out
+        transition: opacity 0.4s ease;
+      }
+
+      // -- Vertical lines --------------------------------------------------
+      &.true-v-lines {
+        & > table > tbody > tr > td:not(.true-cell-checkbox) {
+          border-right: $axDataBorder;
+        }
+
+        // Prevent paddings for indent cells
+        // PRO
+        tr:not(.true-group) td.true-cell-indent {
+          border-top: none !important;
+          border-bottom: none !important;
+        }
+      }
+
+      &.true-v-lines > .data-left td:last-child,
+      &.true-v-lines > .data-right td:last-child {
+        border-right: none !important;
+      }
+
+      // -- Горизонтальные линии -------------------------------------------------
+      &.true-h-lines > table > tbody > tr:not(:last-child) > td {
+        border-bottom: $axDataBorder;
+      }
+
+      // Selected ranges
+      & > table > tbody > tr {
+        transition: opacity 0.5s ease;
+
+        // Several selection levels
+        // First
+        td.true-range-selected1 {
+          background-color: $axSelectedColor1;
+        }
+
+        // Second
+        td.true-range-selected2:not(.true-indent-cell) {
+          background-color:  $axSelectedColor2;
+        }
+
+        // Third
+        td.true-range-selected3:not(.true-indent-cell) {
+          background-color: $axSelectedColor3;
+        }
+
+        // Fourth
+        td.true-range-selected4:not(.true-indent-cell) {
+          background-color: $axSelectedColor4;
+        }
+
+        td.true-range-selected5:not(.true-indent-cell) {
+          background-color: $axSelectedColor5;
+        }
+
+        // Только что показанная
+        &.true-show-animate {
+          opacity: 0.0 !important;
+        }
+      }
+
+      // Higlighted text
+      td .true-hl {
+        background-color: $axSearchHighlightBack;
+      }
+
+      // Focused cell outline
+      &.true-focused-cell-hl:not(.true-drag-in-process) > table > tbody > tr > td.true-cell-focused:not(.true-indent-cell) {
+        outline-offset: -$axFocused-border-width;
+        outline-style: $axFocused-border-style;
+        outline-color: $axFocused-border-color;
+        outline-width: $axFocused-border-width;
+      }
+
+      .true-check-by-click {
+        cursor: pointer;
+      }
+
+      // Перетаскиваемая колонка
+      & tr:not(.true-group) > td.true-cell-disabled:not(.true-range-selected):not(.true-cell-focused) {
+        opacity: 0.4;
+      }
+    }
+
+    // Common footer
+    .true-footer-appearance {
+      border-top: $axHeaderBorder;
+
+      .true-grid-footer {
+        td {
+          cursor: pointer;
+          padding: 0;
+          border-right: 0;
+          // Чекбоксовые поля так же не отделяем
+          &.true-footer-cell__is-checkbox {
+            border-right: 0 !important;
+          }
+
+          .true-icon-sigma {
+            visibility: hidden;
+            opacity: 0.0;
+            transition: $axOpacityTransition;
+          }
+
+          &:hover, &.true-footer-icon-visible {
+            .true-icon-sigma {
+              visibility: visible;
+              opacity: $axNotActiveOpacity;
+            }
+          }
+        }
+
+        // Вертикальные линии в подвале
+        &.true-v-lines td:not(:last-child) {
+          border-right: $axDataBorder;
+        }
+
+        // Итог
+        .true-aggr {
+          box-sizing: border-box;
+          padding: $axGridCellVPadding $axGridCellHPadding;
+          transition: background-color .3s ease-in, opacity .3s ease-in;
+
+          .true-aggr-caption {
+            text-transform: uppercase;
+            color: #999;
+          }
+        }
+
+        // Два итога друг под другом. Немного уменьшаем margins между ними
+        .true-aggr + .true-aggr {
+          margin-top: -$axGridCellVPadding;
+        }
+      }
+    }
+
+    .true-grid-dark.true-fix-ie .true-grid-data-appearance.true-focused-cell-hl:not(.true-drag-in-process) tr > td.true-cell-focused:not(.true-indent-cell) {
+      outline-width: 0;
+      box-shadow: inset 0px 0px 0 1px $axFocused-border-color;
+    }
+
+    // -- Cell with editor -------------------------------------------------------
+    td.true-cell-input {
+      padding: 1px 0 0 0 !important;
+      position: relative;
+      box-shadow: none !important;
+      background-color: $axInputBackgroundColor !important;
+      outline-color: $axFocused-border-color !important;
+      outline-offset: 0;
+      outline-width: 0;
+
+      .mat-form-field {
+        margin: 0 !important;
+
+        width: 100%;
+        .mat-form-field-wrapper {
+          padding: 0;
+        }
+        .mat-form-field-label-wrapper {
+          display: none !important;
+        }
+        .mat-form-field-infix {
+          height: 100%;
+          padding: 0;
+          border-top: 0;
+
+        }
+        .mat-input-element {
+          background: none;
+          outline-style: $axFocused-border-style;
+        }
+        .mat-form-field-underline {
+          background: none;
+          bottom: 0;
+        }
+        .mat-form-field-subscript-wrapper {
+          display: none !important;
+        }
+      }
+
+      input {
+        padding-top: $axGridCellVPadding;
+        padding-bottom: $axGridCellVPadding;
+        padding-left: $axGridCellHPadding;
+        padding-right: $axGridCellHPadding;
+        border: 0 !important;
+        outline: 0 !important;
+        box-sizing: border-box;
+        border-radius: 0;
+        width: 100%;
+        vertical-align: baseline !important;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+    }
+
+    // Если высота строки неизвестна - занимаем 100% высоты
+    .true-grid-editor-100p {
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+    }
+
+    // Если высота строки неизвестна - занимаем 100% высоты
+    .true-grid-editor-ie {
+      height: 100%;
+    }
+
+    //
+    .true-icon-sigma::before {
+      font-family: Cambria, Georgia, Times, Times New Roman, serif;
+      content: "\03a3";
+      font-size: 1.0em;
+      font-weight: bold;
+    }
+
+    // -- GRID STATES --------------------------------------------------------------
+    // -- Состояние - изменение ширины колонки -------------------------------------
+    &.true-resize-in-process {
+      cursor: ew-resize !important; // Курсор на всей поверхности грида
+      .true-cb, .true-cell-checkbox, .true-header-cell, .true-aggr, .true-header-button-mat, .band {
+        cursor: ew-resize !important;
+      }
+    }
+
+    // Не показываем кнопку заголовка при изменении ширины колонки
+    &.true-resize-in-process:not(.true-fix-touch) .true-header-cell__caption:not(.true-header-cell__filtered) > .true-header-button-mat {
+      visibility: hidden !important;
+      cursor: ew-resize;
+    }
+
+    // Курсор на заголовке
+    &.true-resize-in-process .true-header-cell__caption {
+      cursor: ew-resize !important;
+    }
+
+    // -- Состояние - перетаскивание колонки ---------------------------------------
+    &.true-drag-in-process:not(.true-fix-touch) .true-header-cell__caption:not(.true-header-cell__filtered) > .true-header-button-mat {
+      visibility: hidden !important; // Не показываем кнопку в заголовке
+      cursor: default; // И не делаем над ней pointer
+    }
+
+    &.true-drag-in-process td,  &.true-drag-in-process th {
+      cursor: default !important; // Отключаем pointer на всей поверхности
+      .true-cb {
+        cursor: default !important;
+      }
+    }
+  }
+}
