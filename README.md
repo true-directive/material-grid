@@ -101,6 +101,8 @@ html, body { font-size: 14px; }
 body { font-family: Roboto, "Helvetica Neue", sans-serif; }
 ```
 
+Remove existing prebuilt theme from `angular.json` if necessary.
+
 ### 4. Use MaterialGridComponent
 
 In order to add the grid into the template of the AppComponent use **true-material-grid** selector. The list of columns, settings and data should be passed in corresponding attributes:
