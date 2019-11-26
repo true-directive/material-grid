@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2018-2019 Aleksey Melnikov, True Directive Company.
+ * @link https://truedirective.com/
+ * @license MIT
+*/
 import { Directive, ElementRef, Input, EventEmitter, Output,
     Renderer2, Injector,
     ComponentFactoryResolver, ApplicationRef } from '@angular/core';
@@ -16,7 +21,7 @@ import { EditorNumberMatComponent } from './editors/editor-number-mat.component'
     selector: '[true-material-row]'
 })
 export class MaterialRowDirective extends RowDirective {
- 
+
     protected checkboxType(canEdit: boolean): any {
       if (this.state.settings.checkByCellClick) {
         return MatPseudoCheckboxCell;

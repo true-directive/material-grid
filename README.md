@@ -1,7 +1,7 @@
 # TrueDirective Material Grid
 
-Material design wrapper for the [TrueDirective Grid](https://https://github.com/true-directive/true-grid).
-
+Material design wrapper for the [TrueDirective Grid](https://github.com/true-directive/true-grid).
+ 
 For displaying grid parts Angular Material components and styles are used  wherever it's possible. All features of the TrueDirective Grid are available:
 
 - Two dimensional virtual scrolling.

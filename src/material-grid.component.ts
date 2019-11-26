@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2018-2019 Aleksey Melnikov, True Directive Company.
+ * @link https://truedirective.com/
+ * @license MIT
+*/
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 
 import { MaterialRowDirective } from './material-row.directive';

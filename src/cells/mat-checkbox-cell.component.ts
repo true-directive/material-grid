@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2018-2019 Aleksey Melnikov, True Directive Company.
+ * @link https://truedirective.com/
+ * @license MIT
+*/
 import { Component, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 import { GridStateService, Column, ICell } from '@true-directive/grid';
@@ -19,8 +24,6 @@ import { GridStateService, Column, ICell } from '@true-directive/grid';
   styleUrls: ['./mat-checkbox-cell.component.scss']
   })
 export class MatCheckboxCell implements ICell {
-//     [indeterminate]="indeterminate"
-//    [(ngModel)]="value"
 
   public noAnimate = true;
 
@@ -58,7 +61,7 @@ export class MatCheckboxCell implements ICell {
   }
 
   cbTouchStart(e: any) {
-    this.noAnimate = false;    
+    this.noAnimate = false;
   }
 
   cbTouchEnd(e: any) {
