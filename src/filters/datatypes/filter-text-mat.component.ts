@@ -25,12 +25,12 @@ import { InternationalizationService } from '@true-directive/grid';
   styles: [`
     :host {
       display: block;
-      width: 27em;
+      width: 24em;
     }
     .true-filter-field  {
       flex-grow: 1;
     }
-    
+
     .true-filter-text__options {
       padding: 0;
       margin: 0;
