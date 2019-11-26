@@ -1,7 +1,7 @@
 # TrueDirective Material Grid
 
 Material design wrapper for the [TrueDirective Grid](https://github.com/true-directive/true-grid).
- 
+
 For displaying grid parts Angular Material components and styles are used  wherever it's possible. All features of the TrueDirective Grid are available:
 
 - Two dimensional virtual scrolling.
@@ -322,6 +322,9 @@ export class AppComponent {
       this._settings.rowHeight = 38;
       this._settings.appearance.verticalLines = false;
 
+      // Adapt for screen width
+      this._settings.columnAutoWidth = true;
+
       // Allow user to edit cell value by clicking on the focused cell
       this._settings.editorShowMode = TD.EditorShowMode.ON_CLICK_FOCUSED;
 
@@ -340,4 +343,4 @@ export class AppComponent {
 
 As a result you will get a table with 50 rows:
 
-![Screenshot 3](https://truedirective.com/assets/m-screen-3.png)
+![Screenshot 3](https://truedirective.com/assets/m-screen-4.png)
