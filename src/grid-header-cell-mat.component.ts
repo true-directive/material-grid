@@ -48,7 +48,7 @@ export class GridHeaderCellMatComponent extends GridHeaderCellComponent {
     return this.elementRef.nativeElement;
   }
 
-  cbMouseDown(e: any, el: HTMLElement) {
+  cbMouseDown(e: any) {
     e.stopPropagation();
   }
 
