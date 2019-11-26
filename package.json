@@ -1,7 +1,7 @@
 {
   "name": "@true-directive/material-grid",
   "description": "Material design wrapper for the TrueDirective Grid.",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "scripts": {
     "test": "karma start",
     "test-ci": "karma start --singleRun --browsers ChromeHeadless",
