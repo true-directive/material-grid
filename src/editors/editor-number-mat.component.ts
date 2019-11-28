@@ -13,9 +13,11 @@ import { MaskNumberDirective } from '@true-directive/grid';
 
 import { IEditor } from '@true-directive/grid';
 
+import { EditorBaseMatComponent } from './editor-base-mat.component';
+
 @Component({
   selector: 'true-editor-number-mat',
-  template: `<mat-form-field class="true-grid__input-container">
+  template: `<mat-form-field class="true-grid__input-container" [style.padding]="getP()">
               <input matInput #input
                 class="true-grid-input true-editor-number__input"
                 [true-mask-number]="getFormat()"
@@ -34,7 +36,7 @@ import { IEditor } from '@true-directive/grid';
     }
     `]
   })
-export class EditorNumberMatComponent implements IEditor {
+export class EditorNumberMatComponent extends EditorBaseMatComponent {
 
   ie = false;
   value: number | null = null;
@@ -138,28 +140,6 @@ export class EditorNumberMatComponent implements IEditor {
     }
   }
 
-  // Если у нас есть информация о высоте строки - берем её и не
-  // назначаем никакого класса
-  getClass() {
-
-    if ((this.height !== null && this.height > 0)) {
-      return '';
-    }
-
-    if (this.ie) {
-      return 'true-grid-editor-ie';
-    } else {
-      return 'true-grid-editor-100p';
-    }
-  }
-
-  getH() {
-    if (this.height !== null && this.height > 0) {
-      return (this.height - 2) + 'px';
-    }
-    return '100%';
-  }
-
   getFormat() {
     if (this.column.format !== '') {
       return this.column.format;
@@ -167,5 +147,7 @@ export class EditorNumberMatComponent implements IEditor {
     return '{1}';
   }
 
-  constructor(protected _renderer: Renderer2) { }
+  constructor(protected _renderer: Renderer2) {
+    super();
+  }
 }

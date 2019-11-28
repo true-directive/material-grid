@@ -7,14 +7,16 @@ import { Component, Input, Output, EventEmitter, ViewChild,
          Renderer2 } from '@angular/core';
 
 import { Column } from '@true-directive/base';
-import { Keys } from '@true-directive/base';
+import { Keys, Utils } from '@true-directive/base';
 
 import { GridStateService } from '@true-directive/grid';
 import { IEditor } from  '@true-directive/grid';
 
+import { EditorBaseMatComponent } from './editor-base-mat.component';
+
 @Component({
   selector: 'true-editor-text-mat',
-  template: `<mat-form-field class="true-grid__input-container">
+  template: `<mat-form-field class="true-grid__input-container" [style.padding]="getP()">
               <input matInput #input class="true-grid-input"
                   [(ngModel)]="value"
                   (ngModelChange)="inputChange($event)"
@@ -29,11 +31,11 @@ import { IEditor } from  '@true-directive/grid';
     }
     `]
   })
-export class EditorTextMatComponent implements IEditor {
+export class EditorTextMatComponent extends EditorBaseMatComponent {
 
-  private ie: boolean = false;
-  private valueChanged: boolean = false;
-  private height: number = 0;
+  public ie: boolean = false;
+  public valueChanged: boolean = false;
+  public height: number = 0;
 
   public value: string;
 
@@ -143,6 +145,7 @@ export class EditorTextMatComponent implements IEditor {
     }
   }
 
+/*
   // Если у нас есть информация о высоте строки - берем её и не
   // назначаем никакого класса
   getClass() {
@@ -156,12 +159,25 @@ export class EditorTextMatComponent implements IEditor {
     }
   }
 
+  getP() {
+    if (Utils.detectFirefox()) {
+      return "1px 0 0 0";
+    }
+    return "0";
+  }
+
   getH() {
+    if (Utils.detectFirefox()) {
+      return (this.height - 1) + 'px';
+    }
     if (this.height !== null && this.height > 0) {
       return (this.height - 2) + 'px';
     }
     return '100%';
   }
+*/
 
-  constructor(protected _renderer: Renderer2) { }
+  constructor(protected _renderer: Renderer2) {
+    super();
+  }
 }

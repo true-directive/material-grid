@@ -13,10 +13,12 @@ import { Keys } from '@true-directive/base';
 import { GridStateService } from '@true-directive/grid';
 import { MaskDateDirective, IEditor } from  '@true-directive/grid';
 
+import { EditorBaseMatComponent } from './editor-base-mat.component';
+
 @Component({
   selector: 'true-editor-date-mat',
   template:
-      `<mat-form-field class="true-grid__input-container">
+      `<mat-form-field class="true-grid__input-container" [style.padding]="getP()">
               <input type="hidden" [matDatepicker]="picker" [(ngModel)]="value" (dateChange)="datepickerDateChange($event)">
               <input matInput #input class="true-grid-input"
                   [style.height]="getH()"
@@ -41,7 +43,7 @@ import { MaskDateDirective, IEditor } from  '@true-directive/grid';
     }
     `]
   })
-export class EditorDateMatComponent implements IEditor  {
+export class EditorDateMatComponent extends EditorBaseMatComponent  {
 
   ie: boolean;
   value: any = null;
@@ -137,7 +139,7 @@ export class EditorDateMatComponent implements IEditor  {
   }
 
   inputKeyDown(e: any) {
-    
+
     if (e.keyCode === Keys.DOWN && e.altKey) {
       this.picker.open();
       e.stopPropagation();
@@ -159,26 +161,6 @@ export class EditorDateMatComponent implements IEditor  {
       this.commit.emit(this.purify(this.value));
       return;
     }
-  }
-
-  getClass() {
-    let res = 'true-editor-date__datepicker';
-    if (this.height !== null && this.height > 0) {
-      return res;
-    }
-
-    if (this.ie) {
-      return res + ' true-grid-editor-ie';
-    } else {
-      return res + ' true-grid-editor-100p';
-    }
-  }
-
-  getH() {
-    if (this.height !== null && this.height > 0) {
-      return (this.height - 2) + 'px';
-    }
-    return '100%';
   }
 
   protected purify(v: any): any {
