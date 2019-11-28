@@ -322,7 +322,7 @@ export class AppComponent {
       this._settings.rowHeight = 38;
       this._settings.appearance.verticalLines = false;
 
-      // Adapt for screen width
+      // Adapt for the screen width
       this._settings.columnAutoWidth = true;
 
       // Allow user to edit cell value by clicking on the focused cell
