@@ -1,5 +1,11 @@
 # Change log
 
-## [0.9.5] - 2019-11-26
+## [0.9.6] - 2019-11-29
 
-- Initial commit.
+### Added
+
+- Select editor for cells.
+
+### Fixed
+
+- Firefox editor height.
