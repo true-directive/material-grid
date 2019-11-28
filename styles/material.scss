@@ -22,23 +22,28 @@
   // Is theme dark?
   $axIsDark: map-get($theme, is-dark);
   $axAccent: map-get($theme, accent);
+  $axPrimary: map-get($theme, primary);
 
   // Header params
   $axHeaderColor: mat-color($axForeground, secondary-text, 0.4);
   $axHeaderBorder: 1px solid mat-color($axForeground, divider);
 
-  // Focused cell params
-  $axFocused-border-width: 1px;
-  $axFocused-border-color: mat-color($axForeground, divider, if($axIsDark, 0.3, 0.25));
-  $axFocused-border-style: solid;
-
-  $axDataBackColor: mat-color($axBackground, card);
 
   // Data cell params
-  $axDataBorder: 1px solid if($axIsDark,
+  $axDataBackColor: mat-color($axBackground, card);
+
+  $axDataBorderColor: if($axIsDark,
     darken(mat-color($axForeground, divider), 40%),
     lighten(mat-color($axForeground, divider), 40%)) !default;
 
+  $axDataBorder: 1px solid $axDataBorderColor;
+
+  // Focused cell params
+  $axFocused-border-width: 1px;
+  $axFocused-border-color:  if($axIsDark,
+    darken(mat-color($axPrimary), 1%),
+    lighten(mat-color($axPrimary), 20%)) !default;
+  $axFocused-border-style: solid;
 
   // Selection params
   $axSelectedColor1: if($axIsDark,
@@ -113,13 +118,13 @@
     }
   }
 
-  // Пункт всплывающего меню
+  // Popup menu item
   .true-mat-menu-item {
-    // Наши наименования довольно коротки. Чтобы не было узкого меню
+    // Our captions are short. Set min width to 150px.
     min-width: 150px !important;
 
     .mat-icon {
-      // Корректируем размер
+      // Correct icon size
       font-size: 20px !important;
       margin-right: 6px;
       // По умолчанию иконки скрыты.
@@ -144,7 +149,6 @@
 
       .true-grid-header {
         opacity: 0.97;
-
         .true-header-cell {
           padding: 0 $axGridCellHPadding;
         }
@@ -420,9 +424,9 @@
       box-shadow: inset 0px 0px 0 1px $axFocused-border-color;
     }
 
-    // -- Cell with editor -------------------------------------------------------
+    // -- Cell with editor -----------------------------------------------------
     td.true-cell-input {
-      padding: 1px 0 0 0 !important;
+      padding: 0 0 0 0 !important; // 1px
       position: relative;
       box-shadow: none !important;
       background-color: $axInputBackgroundColor !important;
@@ -444,9 +448,8 @@
           height: 100%;
           padding: 0;
           border-top: 0;
-
         }
-        .mat-input-element {
+        .mat-input-element, .mat-select {
           background: none;
           outline-style: $axFocused-border-style;
         }
@@ -458,12 +461,8 @@
           display: none !important;
         }
       }
-
       input {
-        padding-top: $axGridCellVPadding;
-        padding-bottom: $axGridCellVPadding;
-        padding-left: $axGridCellHPadding;
-        padding-right: $axGridCellHPadding;
+        padding: $axGridCellVPadding $axGridCellHPadding;
         border: 0 !important;
         outline: 0 !important;
         box-sizing: border-box;
@@ -471,6 +470,11 @@
         width: 100%;
         vertical-align: baseline !important;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
+      }
+      .mat-select {
+        padding: 0 $axGridCellHPadding; // line-height=H (There is no other way)
+        box-sizing: border-box;
+        width: 100%;
       }
     }
 
@@ -487,7 +491,7 @@
       height: 100%;
     }
 
-    //
+    // Sigma icon
     .true-icon-sigma::before {
       font-family: Cambria, Georgia, Times, Times New Roman, serif;
       content: "\03a3";
@@ -495,8 +499,8 @@
       font-weight: bold;
     }
 
-    // -- GRID STATES --------------------------------------------------------------
-    // -- Состояние - изменение ширины колонки -------------------------------------
+    // -- GRID STATES -------------------------------------------------
+    // -- State - resizing column -------------------------------------
     &.true-resize-in-process {
       cursor: ew-resize !important; // Курсор на всей поверхности грида
       .true-cb, .true-cell-checkbox, .true-header-cell, .true-aggr, .true-header-button-mat, .band {
@@ -515,7 +519,7 @@
       cursor: ew-resize !important;
     }
 
-    // -- Состояние - перетаскивание колонки ---------------------------------------
+    // -- State - reordering column -----------------------------------
     &.true-drag-in-process:not(.true-fix-touch) .true-header-cell__caption:not(.true-header-cell__filtered) > .true-header-button-mat {
       visibility: hidden !important; // Не показываем кнопку в заголовке
       cursor: default; // И не делаем над ней pointer

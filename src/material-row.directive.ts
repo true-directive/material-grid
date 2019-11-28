@@ -16,6 +16,7 @@ import { RowCell, RowDirective } from '@true-directive/grid';
 import { EditorTextMatComponent } from './editors/editor-text-mat.component';
 import { EditorDateMatComponent } from './editors/editor-date-mat.component';
 import { EditorNumberMatComponent } from './editors/editor-number-mat.component';
+import { EditorSelectMatComponent } from './editors/editor-select-mat.component';
 
 @Directive({
     selector: '[true-material-row]'
@@ -35,6 +36,9 @@ export class MaterialRowDirective extends RowDirective {
       }
       if (col.type === ColumnType.DATETIME) {
         return EditorDateMatComponent;
+      }
+      if (col.type === ColumnType.UNSAFE_HTML) {
+        return EditorSelectMatComponent;
       }
       return EditorTextMatComponent;
     }
@@ -112,7 +116,7 @@ export class MaterialRowDirective extends RowDirective {
         this.state.editorHeight = this._height0;
         // Необходимо установить высоту ячейки для необузданных material-инпутов
         if (this._height0 >= this.state.settings.rowHeight) {
-          cell.element.style.height = (this._height0 - 1) + 'px';
+          cell.element.style.height = (this._height0 /*- 1*/) + 'px';
         }
       }
     }

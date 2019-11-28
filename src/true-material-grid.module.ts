@@ -24,6 +24,7 @@ import { GridFooterCellMatComponent } from './grid-footer-cell-mat.component';
 import { EditorTextMatComponent } from './editors/editor-text-mat.component';
 import { EditorDateMatComponent } from './editors/editor-date-mat.component';
 import { EditorNumberMatComponent } from './editors/editor-number-mat.component';
+import { EditorSelectMatComponent } from './editors/editor-select-mat.component';
 
 import { MatCheckboxCell } from './cells/mat-checkbox-cell.component';
 import { MatPseudoCheckboxCell } from './cells/mat-pseudo-checkbox-cell.component';
@@ -71,7 +72,11 @@ import { MatSelectModule } from '@angular/material/select';
     GridFooterMatComponent,
     GridFooterCellMatComponent,
 
-    EditorTextMatComponent, EditorDateMatComponent, EditorNumberMatComponent,
+    EditorTextMatComponent,
+    EditorDateMatComponent,
+    EditorNumberMatComponent,
+    EditorSelectMatComponent,
+
     PopupMatComponent,
     DialogWrapperMatComponent,
     DatepickerMatComponent,
@@ -84,7 +89,10 @@ import { MatSelectModule } from '@angular/material/select';
   ],
 
   entryComponents: [ MatCheckboxCell, MatPseudoCheckboxCell,
-    EditorTextMatComponent, EditorDateMatComponent, EditorNumberMatComponent,
+
+    EditorTextMatComponent, EditorDateMatComponent,
+    EditorNumberMatComponent, EditorSelectMatComponent,
+
     FilterBooleanMatComponent, FilterDateMatComponent,
     FilterNumberMatComponent, FilterTextMatComponent ],
 
