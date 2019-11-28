@@ -8,7 +8,7 @@ import { NgModule, Component, Input, Output, ViewChild,
          EventEmitter } from '@angular/core';
 
 import { GridStateService } from '@true-directive/grid';
-import { Column, ColumnType, SummaryType, Summary } from '@true-directive/base';
+import { Column, ColumnType, SummaryType, Summary } from '@true-directive/grid';
 
 @Component({
   selector: 'true-grid-footer-cell-mat',

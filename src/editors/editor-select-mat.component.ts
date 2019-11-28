@@ -8,9 +8,9 @@ import { Component, Input, Output, EventEmitter, ViewChild, OnDestroy } from '@a
 import { Subject, Observable } from 'rxjs';
 import { takeUntil, take } from 'rxjs/operators';
 
-import { Column } from '@true-directive/base';
+import { Column } from '@true-directive/grid';
 import { IEditor, GridStateService } from '@true-directive/grid';
-import { Keys, Utils } from '@true-directive/base';
+import { Keys, Utils } from '@true-directive/grid';
 
 import { EditorBaseMatComponent } from './editor-base-mat.component';
 
@@ -137,10 +137,6 @@ export class EditorSelectMatComponent extends EditorBaseMatComponent implements 
       this.commit.emit(this.value);
       return;
     }
-  }
-
-  inputBlur(e: any) {
-    this.cancel.emit(true);
   }
 
   ngOnDestroy() {

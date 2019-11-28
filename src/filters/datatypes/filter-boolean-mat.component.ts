@@ -6,10 +6,8 @@
 import { Component, Input, Output, EventEmitter, HostBinding,
          ChangeDetectorRef, Renderer2, ViewChild } from "@angular/core";
 
-import { FilterOperator } from '@true-directive/base';
-
+import { FilterOperator } from '@true-directive/grid';
 import { FilterBooleanComponent } from '@true-directive/grid';
-// import { InternationalizationService } from '../../internationalization/internationalization.service';
 
 @Component({
   selector: "true-filter-boolean-mat",

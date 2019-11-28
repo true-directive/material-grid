@@ -7,8 +7,7 @@ import { Component, Input, Output, ViewChild, ContentChild, Renderer2,
          ChangeDetectorRef,
          EventEmitter, ElementRef } from '@angular/core';
 
-import { Utils, Keys, PopupPosition, CloseEvent } from '@true-directive/base';
-
+import { Utils, Keys } from '@true-directive/grid';
 import { PopupComponent } from '@true-directive/grid';
 
 import {
@@ -69,7 +68,7 @@ export class PopupMatComponent extends PopupComponent {
   }
 
   protected startAnimation() {
-    // Just overriding. We are using angular animations now. 
+    // Just overriding. We are using angular animations now.
   }
 
   checkClose(target: any) {

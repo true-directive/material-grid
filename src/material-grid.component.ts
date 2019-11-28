@@ -8,7 +8,7 @@ import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { MaterialRowDirective } from './material-row.directive';
 import { GridFooterMatComponent } from './grid-footer-mat.component';
 
-import { Column, ColumnType, Filter } from '@true-directive/base';
+import { Column, ColumnType, Filter } from '@true-directive/grid';
 import { GridComponent, GridStateService } from '@true-directive/grid';
 
 import { FilterTextMatComponent } from './filters/datatypes/filter-text-mat.component';

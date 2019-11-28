@@ -6,8 +6,8 @@
 import { Component, Input, Output, EventEmitter, ViewChild,
          Renderer2 } from '@angular/core';
 
-import { Column } from '@true-directive/base';
-import { Keys, Utils } from '@true-directive/base';
+import { Column } from '@true-directive/grid';
+import { Keys, Utils } from '@true-directive/grid';
 
 import { GridStateService } from '@true-directive/grid';
 import { IEditor } from  '@true-directive/grid';

@@ -8,9 +8,8 @@ import { NgModule, Component, Input, ViewChild, ViewChildren, ChangeDetectorRef,
 
 // Теперь наше
 import { GridStateService } from '@true-directive/grid';
-import { GridLayout } from '@true-directive/base';
-import { Column, ColumnType, SummaryType, Summary } from '@true-directive/base';
-
+import { GridLayout } from '@true-directive/grid';
+import { Column, ColumnType, SummaryType, Summary } from '@true-directive/grid';
 import { BaseComponent } from '@true-directive/grid';
 
 import { MatMenuTrigger } from '@angular/material/menu';

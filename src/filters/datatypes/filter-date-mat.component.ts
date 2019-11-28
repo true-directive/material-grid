@@ -7,13 +7,13 @@ import { Component, Input, Output, EventEmitter, HostBinding,
          ChangeDetectorRef,
          ViewChild } from '@angular/core';
 
-import { ColumnType, DetectionMode, SelectionMode } from '@true-directive/base';
-import { Column } from '@true-directive/base';
-import { FilterOperator, Filter } from '@true-directive/base';
+import { ColumnType, DetectionMode, SelectionMode } from '@true-directive/grid';
+import { Column } from '@true-directive/grid';
+import { FilterOperator, Filter } from '@true-directive/grid';
 
-import { GridSettings } from '@true-directive/base';
-import { Dates } from '@true-directive/base';
-import { Utils } from '@true-directive/base';
+import { GridSettings } from '@true-directive/grid';
+import { Dates } from '@true-directive/grid';
+import { Utils } from '@true-directive/grid';
 
 import { FilterDateComponent } from '@true-directive/grid';
 import { PopupComponent } from '@true-directive/grid';

@@ -7,8 +7,8 @@ import { Component, Input, Output, EventEmitter, ViewChild } from '@angular/core
 
 import { MatDatepicker } from '@angular/material/datepicker';
 
-import { Column } from '@true-directive/base';
-import { Keys } from '@true-directive/base';
+import { Column } from '@true-directive/grid';
+import { Keys } from '@true-directive/grid';
 
 import { GridStateService } from '@true-directive/grid';
 import { MaskDateDirective, IEditor } from  '@true-directive/grid';

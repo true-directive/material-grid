@@ -7,16 +7,12 @@ import { Component, Input, Output, EventEmitter, HostBinding,
          ChangeDetectorRef,
          ViewChild } from '@angular/core';
 
-import { ColumnType, DetectionMode, SelectionMode } from '@true-directive/base';
-import { Column } from '@true-directive/base';
-import { FilterOperator, Filter } from '@true-directive/base';
-import { GridSettings } from '@true-directive/base';
-import { GridState } from '@true-directive/base';
+import { ColumnType, DetectionMode, SelectionMode } from '@true-directive/grid';
+import { Column } from '@true-directive/grid';
+import { FilterOperator, Filter } from '@true-directive/grid';
+import { GridSettings, GridState } from '@true-directive/grid';
 
-// import { MenuComponent } from '@true-directive/grid';
 import { FilterBaseComponent } from '@true-directive/grid';
-import { PopupComponent } from '@true-directive/grid';
-
 import { InternationalizationService } from '@true-directive/grid';
 
 @Component({
@@ -189,14 +185,6 @@ export class FilterTextMatComponent extends FilterBaseComponent {
   toggleMode(e: any) {
     e.preventDefault();
     this.selectMode = !this.selectMode;
-  }
-
-  menuOpened(e: any) {
-    PopupComponent.freeze++;
-  }
-
-  menuClosed(e: any) {
-    PopupComponent.freeze = 0;
   }
 
   constructor(

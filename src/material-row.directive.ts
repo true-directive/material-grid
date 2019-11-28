@@ -10,7 +10,7 @@ import { Directive, ElementRef, Input, EventEmitter, Output,
 import { MatCheckboxCell } from './cells/mat-checkbox-cell.component';
 import { MatPseudoCheckboxCell } from './cells/mat-pseudo-checkbox-cell.component';
 
-import { Utils, Column, ColumnType } from '@true-directive/base';
+import { Utils, Column, ColumnType } from '@true-directive/grid';
 import { RowCell, RowDirective } from '@true-directive/grid';
 
 import { EditorTextMatComponent } from './editors/editor-text-mat.component';

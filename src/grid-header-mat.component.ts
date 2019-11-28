@@ -8,13 +8,12 @@ import { NgModule, Component, Input, Output, ViewChild, ViewChildren, OnDestroy,
          EventEmitter, QueryList, ElementRef, Inject } from '@angular/core';
 
 // Теперь наше
-import { ColumnType, GridPart } from '@true-directive/base';
-import { UIAction, UIActionType } from '@true-directive/base';
+import { ColumnType, GridPart } from '@true-directive/grid';
+import { UIAction, UIActionType } from '@true-directive/grid';
 
-import { Column } from '@true-directive/base';
-import { ColumnBand } from '@true-directive/base';
+import { Column, ColumnBand } from '@true-directive/grid';
 
- import { GridLayout } from '@true-directive/base';
+ import { GridLayout } from '@true-directive/grid';
 
 import { BaseComponent } from '@true-directive/grid';
 import { ScrollerComponent } from '@true-directive/grid';
@@ -52,7 +51,7 @@ export class GridHeaderMatComponent extends BaseComponent {
 
   @ViewChildren('headerCell', {read: GridHeaderCellMatComponent}) columnElements: QueryList<GridHeaderCellMatComponent>;
   @ViewChildren('headerBand', {read: GridHeaderBandComponent}) bandElements: QueryList<GridHeaderBandComponent>;
- 
+
   private _scrollerClientRect: any = null;
 
   _touches = false;

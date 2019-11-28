@@ -9,8 +9,8 @@ import { Component, Output, EventEmitter, OnDestroy,
          ViewChild } from '@angular/core';
 
 import { FilterPopupComponent, GridStateService } from '@true-directive/grid';
-import { Column } from '@true-directive/base';
-import { Filter } from '@true-directive/base';
+import { Column } from '@true-directive/grid';
+import { Filter } from '@true-directive/grid';
 
 @Component({
   selector: 'true-filter-popup-mat',

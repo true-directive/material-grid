@@ -5,7 +5,7 @@
 */
 import { Output, EventEmitter } from '@angular/core';
 import { IEditor, Column, GridStateService } from '@true-directive/grid';
-import { Utils } from '@true-directive/base';
+import { Utils } from '@true-directive/grid';
 
 export class EditorBaseMatComponent implements IEditor {
 

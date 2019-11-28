@@ -8,9 +8,9 @@ import { NgModule, Component, Input, Output, ElementRef, ViewChild,
 
 import { BaseComponent } from '@true-directive/grid';
 import { GridStateService, GridHeaderCellComponent } from '@true-directive/grid';
-import { ColumnType, GridPart } from '@true-directive/base';
-import { SortType } from '@true-directive/base';
-import { Column } from '@true-directive/base';
+import { ColumnType, GridPart } from '@true-directive/grid';
+import { SortType } from '@true-directive/grid';
+import { Column } from '@true-directive/grid';
 
 
 @Component({

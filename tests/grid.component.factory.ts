@@ -1,6 +1,6 @@
 import {Component, ViewChild, Input, Output, EventEmitter} from '@angular/core';
 
-import { Column, ColumnType, RenderMode, GridSettings, Keys } from '@true-directive/base';
+import { Column, ColumnType, RenderMode, GridSettings, Keys } from '@true-directive/grid';
 
 import { PopupMatComponent } from '../src/controls/popup-mat.component';
 import { MaterialGridComponent } from '../src/material-grid.component';

@@ -5,9 +5,9 @@
 */
 import { Component, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
 
-import { Column } from '@true-directive/base';
+import { Column } from '@true-directive/grid';
 import { GridStateService } from '@true-directive/grid';
-import { Keys } from '@true-directive/base';
+import { Keys } from '@true-directive/grid';
 
 import { MaskNumberDirective } from '@true-directive/grid';
 
