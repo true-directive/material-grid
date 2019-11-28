@@ -9,3 +9,9 @@
 ### Fixed
 
 - Firefox editor height.
+
+## [0.9.8] - 2019-11-29
+
+### Fixed
+
+- Imports form @true-directive/base are removed.
