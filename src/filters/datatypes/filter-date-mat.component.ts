@@ -16,7 +16,6 @@ import { Dates } from '@true-directive/grid';
 import { Utils } from '@true-directive/grid';
 
 import { FilterDateComponent } from '@true-directive/grid';
-import { PopupComponent } from '@true-directive/grid';
 
 import { DatepickerMatComponent } from '../../controls/datepicker-mat.component';
 
@@ -30,25 +29,9 @@ export class FilterDateMatComponent extends FilterDateComponent {
   @ViewChild('firstPicker')
   firstPicker: DatepickerMatComponent;
 
-  selectOpened(e: any) {
-    if (e) {
-      PopupComponent.freeze++;
-    } else {
-      PopupComponent.freeze = 0;
-    }
-  }
-
   protected focusFirst() {
     if (!Utils.detectMobile()) {
       setTimeout(() => this.firstPicker.focus());
     }
-  }
-
-  menuOpened(e: any) {
-    PopupComponent.freeze++;
-  }
-
-  menuClosed(e: any) {
-    PopupComponent.freeze = 0;
   }
 }

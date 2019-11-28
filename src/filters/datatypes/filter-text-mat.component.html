@@ -15,9 +15,7 @@
       <button tabindex="1"
         mat-button
         [disabled]="selectMode"
-        [matMenuTriggerFor]="menu"
-        (menuClosed)="menuClosed($event)"
-        (menuOpened)="menuOpened($event)">{{filter.operator.name | trueTranslate}}</button>
+        [matMenuTriggerFor]="menu">{{filter.operator.name | trueTranslate}}</button>
       <mat-menu
         #menu="matMenu"
         yPosition="below">

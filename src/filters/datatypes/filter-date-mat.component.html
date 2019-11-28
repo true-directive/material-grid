@@ -16,7 +16,7 @@
         pattern="date"></true-datepicker-mat>
       <mat-form-field class="true-filter-field true-filter-date__selector" #intervalSelector>
         <mat-label>{{'Interval' | trueTranslate}}</mat-label>
-        <mat-select [(value)]="currentInterval" (openedChange)="selectOpened($event)">
+        <mat-select [(value)]="currentInterval">
           <mat-option *ngFor="let interval of intervals" [value]="interval.id">
             {{interval.name}}
           </mat-option>
@@ -27,9 +27,7 @@
       <button tabindex="1"
         mat-button
         [disabled]="selectMode"
-        [matMenuTriggerFor]="menu"
-        (menuClosed)="menuClosed($event)"
-        (menuOpened)="menuOpened($event)">{{filter.operator.name | trueTranslate}}</button>
+        [matMenuTriggerFor]="menu">{{filter.operator.name | trueTranslate}}</button>
       <mat-menu
         #menu="matMenu"
         yPosition="below">
