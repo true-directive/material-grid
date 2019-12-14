@@ -15,3 +15,10 @@
 ### Fixed
 
 - Imports form @true-directive/base are removed.
+
+## [1.0.0] - 2019-12-14
+
+### Added
+
+- Setting to prevent autofocus after cell editing.
+- Column.ClassField property.
