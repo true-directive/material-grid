@@ -38,7 +38,7 @@ import { EditorBaseMatComponent } from './editor-base-mat.component';
     .true-grid__input-container {
       width: 100%;
     }
-    /deep/ .true-grid__input-container .mat-icon-button {
+    ::ng-deep .true-grid__input-container .mat-icon-button {
       margin-right: 4px;
     }
     `]

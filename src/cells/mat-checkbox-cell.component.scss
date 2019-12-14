@@ -8,11 +8,11 @@
   transition: none !important;
 }
 
-/deep/ .true-cell-mat-cb .mat-checkbox-background {
+::ng-deep .true-cell-mat-cb .mat-checkbox-background {
   transition: none !important;
 }
 
-/deep/ .true-cell-mat-cb .mat-checkbox-mixedmark {
+::ng-deep .true-cell-mat-cb .mat-checkbox-mixedmark {
   transition: none !important;
   transition-property: none !important;
 }

@@ -29,7 +29,7 @@ th:not(.true-column-resizable) + th.true-column-resizable {
 
 // Если колонку нельзя растягивать, то  отступы правее кнопки убираем
 // Только если показана кнопка фильтра/меню
-/deep/ .true-grid-header th:not(.true-column-resizable):not(.true-column-nobtn):not(.true-header-cell__checkbox) {
+::ng-deep .true-grid-header th:not(.true-column-resizable):not(.true-column-nobtn):not(.true-header-cell__checkbox) {
   padding-right: 0 !important;
   .true-header-cell {
     padding-right: 0 !important;
@@ -37,6 +37,6 @@ th:not(.true-column-resizable) + th.true-column-resizable {
 }
 
 
-/deep/ th:hover .true-header-button-mat {
+::ng-deep th:hover .true-header-button-mat {
   visibility: visible !important;
 }
