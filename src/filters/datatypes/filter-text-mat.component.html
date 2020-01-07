@@ -15,7 +15,7 @@
       <button tabindex="1"
         mat-button
         [disabled]="selectMode"
-        [matMenuTriggerFor]="menu">{{filter.operator.name | trueTranslate}}</button>
+        [matMenuTriggerFor]="menu">{{filter.operator | trueTranslate}}</button>
       <mat-menu
         #menu="matMenu"
         yPosition="below">
@@ -24,7 +24,7 @@
                 class="true-mat-menu-item"
                 (click)="operator(o)">
           <mat-icon [class.true-icon-visible]="filter.operator === o">done</mat-icon>
-          <span>{{o.name | trueTranslate}}</span>
+          <span>{{o | trueTranslate}}</span>
         </button>
         <button class="true-dummy" mat-menu-item>dummy</button>
       </mat-menu>

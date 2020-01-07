@@ -126,6 +126,7 @@ export class MaterialRowDirective extends RowDirective {
         // Underline of input is hidden if it's outside of a cell in FF
         return 0;
       }
+      //return 0;
       return 1;
     }
 
