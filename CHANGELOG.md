@@ -22,3 +22,9 @@
 
 - Setting to prevent autofocus after cell editing.
 - Column.ClassField property.
+
+## [1.0.1] - 2020-01-08
+
+### Added
+
+- Data lazy loading.
